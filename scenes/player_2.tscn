@@ -6,6 +6,7 @@
 size = Vector2(16, 120)
 
 [node name="Player2" type="CharacterBody2D"]
+process_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_je786")

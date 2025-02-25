@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dctkxygcomto1"]
+[gd_scene load_steps=13 format=3 uid="uid://dctkxygcomto1"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6vst2"]
 [ext_resource type="PackedScene" uid="uid://bc1bigg2v13yb" path="res://scenes/wall.tscn" id="1_f8dix"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://r5hnmpvib2i4" path="res://scenes/ball.tscn" id="3_qc5kh"]
 [ext_resource type="PackedScene" uid="uid://dxe0jimo1wsqp" path="res://scenes/player_2.tscn" id="4_hwndp"]
 [ext_resource type="PackedScene" uid="uid://brla5jo2jb5fd" path="res://scenes/score_area.tscn" id="4_o2ga6"]
-[ext_resource type="Script" path="res://scripts/opponent_ai.gd" id="10_0dn3h"]
 [ext_resource type="PackedScene" uid="uid://bk2ysbjoyb53s" path="res://scenes/pause_menu.tscn" id="10_lr05i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vbsyo"]
@@ -45,7 +44,6 @@ text = "X"
 horizontal_alignment = 1
 
 [node name="ScoreOpponent" type="Label" parent="GameUI"]
-z_index = 1
 anchors_preset = -1
 anchor_left = 0.561
 anchor_top = 0.221
@@ -71,10 +69,21 @@ position = Vector2(35, -23)
 [node name="Wall2" parent="Arena/Walls" instance=ExtResource("1_f8dix")]
 position = Vector2(34, 591)
 
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource("2_colfv")]
+position = Vector2(42, 192)
+
+[node name="Player2" parent="Players" instance=ExtResource("4_hwndp")]
+position = Vector2(1119, 528)
+
 [node name="Ball" parent="." instance=ExtResource("3_qc5kh")]
 unique_name_in_owner = true
 position = Vector2(612, 393)
 start_position = Vector2(612, 393)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(612, 396)
 
 [node name="ScoreArea" parent="." instance=ExtResource("4_o2ga6")]
 position = Vector2(-37, 368)
@@ -89,24 +98,14 @@ position = Vector2(1244, 392)
 shape = SubResource("WorldBoundaryShape2D_jbqn4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(605, 419)
+position = Vector2(612, 397)
 scale = Vector2(1.64589, 1.56484)
 texture = ExtResource("1_k6jo3")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(612, 393)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Player1" parent="." instance=ExtResource("2_colfv")]
-position = Vector2(42, 192)
-
-[node name="Player2" parent="." instance=ExtResource("4_hwndp")]
-position = Vector2(1119, 528)
-script = ExtResource("10_0dn3h")
-
-[node name="PauseMenu" parent="." instance=ExtResource("10_lr05i")]
-process_mode = 3
-z_index = 2
-offset_left = 35.0
-offset_top = 74.0
-offset_right = 35.0
-offset_bottom = 74.0
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_lr05i")]
+offset_left = 32.0
+offset_top = 77.0
+offset_right = 32.0
+offset_bottom = 77.0

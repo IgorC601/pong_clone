@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c3ehvnoy1iuwc" path="res://assets/arts/Player.png" id="2_lx4p7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba8r5"]
-size = Vector2(16, 119)
+size = Vector2(16, 120)
 
 [node name="Player1" type="CharacterBody2D"]
+process_mode = 1
 z_index = 1
 script = ExtResource("1_apwvh")
 
@@ -16,5 +17,5 @@ texture = ExtResource("2_lx4p7")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(41, 64.5)
+position = Vector2(41, 65)
 shape = SubResource("RectangleShape2D_ba8r5")

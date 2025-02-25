@@ -6,9 +6,9 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if name == "ScoreArea":
-		GameManager.add_point_p2()
+		game_manager.add_point_p2()
 	elif name == "ScoreArea2":
-		GameManager.add_point_p1()
+		game_manager.add_point_p1()
 	
 	ball.reset_position()
 	timer.start()
