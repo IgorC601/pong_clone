@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6vst2"]
 [ext_resource type="PackedScene" uid="uid://bc1bigg2v13yb" path="res://scenes/wall.tscn" id="1_f8dix"]
-[ext_resource type="Texture2D" uid="uid://b135kilnd3avy" path="res://assets/arts/Board.png" id="1_k6jo3"]
-[ext_resource type="FontFile" uid="uid://cc5ow3oq44d5e" path="res://assets/fonts/Teko-Bold.ttf" id="2_0f4fc"]
+[ext_resource type="Texture2D" uid="uid://dc3xwwsf77wea" path="res://assets/arts/Board.png" id="1_k6jo3"]
+[ext_resource type="FontFile" uid="uid://buixfe280y5u0" path="res://assets/fonts/Teko-Bold.ttf" id="2_0f4fc"]
 [ext_resource type="PackedScene" uid="uid://cloehgr6jogpb" path="res://scenes/player_1.tscn" id="2_colfv"]
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="2_hhara"]
 [ext_resource type="PackedScene" uid="uid://r5hnmpvib2i4" path="res://scenes/ball.tscn" id="3_qc5kh"]
@@ -70,13 +70,15 @@ position = Vector2(34, 591)
 [node name="Players" type="Node" parent="."]
 
 [node name="Player1" parent="Players" instance=ExtResource("2_colfv")]
-position = Vector2(73, 186)
+position = Vector2(42, 192)
 
 [node name="Player2" parent="Players" instance=ExtResource("4_hwndp")]
-position = Vector2(1032, 518)
+position = Vector2(1119, 528)
 
 [node name="Ball" parent="." instance=ExtResource("3_qc5kh")]
-position = Vector2(578, 386)
+unique_name_in_owner = true
+position = Vector2(612, 393)
+start_position = Vector2(612, 393)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(612, 396)
