@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://dctkxygcomto1"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6vst2"]
+[ext_resource type="PackedScene" uid="uid://bc1bigg2v13yb" path="res://scenes/wall.tscn" id="1_f8dix"]
+[ext_resource type="Texture2D" uid="uid://b135kilnd3avy" path="res://assets/arts/Board.png" id="1_k6jo3"]
+[ext_resource type="FontFile" uid="uid://cc5ow3oq44d5e" path="res://assets/fonts/Teko-Bold.ttf" id="2_0f4fc"]
+[ext_resource type="PackedScene" uid="uid://cloehgr6jogpb" path="res://scenes/player_1.tscn" id="2_colfv"]
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="2_hhara"]
+[ext_resource type="PackedScene" uid="uid://r5hnmpvib2i4" path="res://scenes/ball.tscn" id="3_qc5kh"]
+[ext_resource type="PackedScene" uid="uid://dxe0jimo1wsqp" path="res://scenes/player_2.tscn" id="4_hwndp"]
+[ext_resource type="PackedScene" uid="uid://brla5jo2jb5fd" path="res://scenes/score_area.tscn" id="4_o2ga6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vbsyo"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jbqn4"]
+normal = Vector2(-1, 0)
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_6vst2")
+
+[node name="GameUI" type="Node" parent="."]
+script = ExtResource("2_hhara")
+
+[node name="ScorePlayer" type="Label" parent="GameUI"]
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.222
+anchor_right = 0.503
+anchor_bottom = 0.222
+offset_left = -29.4561
+offset_top = -35.856
+offset_right = 30.5439
+offset_bottom = 36.144
+theme_override_colors/font_color = Color(0.843137, 0.47451, 0.321569, 1)
+theme_override_fonts/font = ExtResource("2_0f4fc")
+theme_override_font_sizes/font_size = 50
+text = "X"
+horizontal_alignment = 1
+
+[node name="ScoreOpponent" type="Label" parent="GameUI"]
+anchors_preset = -1
+anchor_left = 0.561
+anchor_top = 0.221
+anchor_right = 0.561
+anchor_bottom = 0.221
+offset_left = -30.272
+offset_top = -36.208
+offset_right = 29.728
+offset_bottom = 35.792
+theme_override_colors/font_color = Color(0.188235, 0.533333, 0.780392, 1)
+theme_override_fonts/font = ExtResource("2_0f4fc")
+theme_override_font_sizes/font_size = 50
+text = "X"
+horizontal_alignment = 1
+
+[node name="Arena" type="Node" parent="."]
+
+[node name="Walls" type="Node" parent="Arena"]
+
+[node name="Wall" parent="Arena/Walls" instance=ExtResource("1_f8dix")]
+position = Vector2(35, -23)
+
+[node name="Wall2" parent="Arena/Walls" instance=ExtResource("1_f8dix")]
+position = Vector2(34, 591)
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource("2_colfv")]
+position = Vector2(73, 186)
+
+[node name="Player2" parent="Players" instance=ExtResource("4_hwndp")]
+position = Vector2(1032, 518)
+
+[node name="Ball" parent="." instance=ExtResource("3_qc5kh")]
+position = Vector2(578, 386)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(612, 396)
+
+[node name="ScoreArea" parent="." instance=ExtResource("4_o2ga6")]
+position = Vector2(-37, 368)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+shape = SubResource("WorldBoundaryShape2D_vbsyo")
+
+[node name="ScoreArea2" parent="." instance=ExtResource("4_o2ga6")]
+position = Vector2(1244, 392)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea2"]
+shape = SubResource("WorldBoundaryShape2D_jbqn4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(612, 397)
+scale = Vector2(1.64589, 1.56484)
+texture = ExtResource("1_k6jo3")
