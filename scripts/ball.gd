@@ -24,11 +24,6 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		hit_sound.play()
 		direction = direction.bounce(collision.get_normal())
-		
-		var min_angle = PI / 3
-		if abs(direction.angle()) < min_angle or abs(direction.angle()) > PI - min_angle:
-			direction = Vector2(direction.x, sign(direction.y) * sin(min_angle)).normalized()
-		
 
 func reset_position() -> void:
 	position = start_position 

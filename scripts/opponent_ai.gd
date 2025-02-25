@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
-const BUFFER = 70.0
+const BUFFER = 65.0
 @onready var ball: CharacterBody2D = %Ball
 
 		
